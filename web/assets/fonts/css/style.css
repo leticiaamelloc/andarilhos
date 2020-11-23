@@ -1,0 +1,274 @@
+body {
+  margin: 0;
+  background-color: #dddddd;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #888888;
+}
+
+#opacidade {
+  width: 100%;
+  height: 100vh;
+  background-color: hsla(0, 0%, 0%, 0.6);
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popup {
+  background-color: white;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #000000;
+  position: relative;
+  width: 60%;
+  max-width: 400px;
+}
+
+#popup img {
+  width: 100%;
+}
+
+#fechar {
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  cursor: pointer;
+}
+
+#topo {
+  background-color:#31669c;
+  padding: 20px 0;
+}
+
+#menu {
+  margin-top: 20px;
+}
+
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu ul li {
+  display: inline-block;
+}
+
+/*submenu*/
+#menu ul li ul {
+  display: none;
+  background-color: #2b0101;
+  position: absolute;
+  z-index: 1;
+}
+
+/* item do sub-menu */
+#menu ul li ul li {
+  display: block;
+  text-align: left;
+}
+
+#menu ul li:hover ul {
+  display: block;
+}
+
+#menu ul li ul li a {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #333333;
+}
+
+#menu a {
+  padding-left: 28px;
+  padding-right: 28px;
+
+  font-family: "Kill The Lights";
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  text-decoration: underline;
+}
+
+#banner img {
+  width: 100%;
+}
+
+.bx-wrapper {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.coluna-superior {
+  width: 45%; /*450px*/
+}
+
+.coluna-superior img,
+.coluna-inferior img {
+  width: 100%;
+}
+
+.coluna-inferior {
+  width: 22%; /*220px*/
+  font-size: 14px;
+}
+
+h1,
+h2 {
+  color: #8c0000;
+  font-size: 20px;
+  font-family: "Kill The Lights";
+  font-weight: normal;
+  margin: 0 0 5px 0; /*top right bottom left*/
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.btn {
+  font-size: 14px;
+  text-decoration: none;
+  color: #888888;
+  display: inline-block;
+  padding: 5px 15px;
+  border: 1px solid #999999;
+  border-radius: 5px;
+  transition: 1s;
+}
+
+.btn:hover {
+  background-color: #333333;
+  color: white;
+}
+
+.linha {
+  margin: 40px 0;
+}
+
+.bg-cinza {
+  background-color: #d2d2d2;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+
+.depoimento {
+  font-size: 18px;
+}
+
+#rodape {
+  background-color: #333333;
+  color: white;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+/*Ipad -> 768x1024*/
+@media screen and (max-width: 1024px) {
+  #menu a {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #menu {
+    display: none;
+  }
+
+  #menu ul li {
+    display: block;
+  }
+
+  #menu a {
+    display: block;
+    border-bottom: 1px dashed #707070;
+    padding: 20px 0;
+  }
+
+  #menu a:first-child {
+    border-top: 1px dashed #707070;
+  }
+
+  #menu ul li ul {
+    position: static;
+  }
+
+  #menu ul li ul li a {
+    text-align: center;
+    border: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #logo img {
+    width: 180px;
+  }
+
+  #btn-menu {
+    position: absolute;
+    top: 32px;
+    right: 20px;
+  }
+
+  .barra {
+    width: 40px;
+    height: 5px;
+    background-color: white;
+    margin-bottom: 2px;
+    border-radius: 3px;
+
+    transition: 0.3s;
+  }
+
+  /*Menu está visível*/
+
+  .x .barra:first-child {
+    transform: rotate(45deg) translate(5px, 0);
+  }
+
+  .x .barra:nth-child(2) {
+    transform: rotate(-45deg) translate(5px, 0);
+  }
+
+  .x .barra:last-child {
+    opacity: 0;
+  }
+
+  .coluna-superior,
+  .coluna-inferior {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /*.coluna-inferior img{
+        width: 100%;
+        max-width: 220px;
+    }
+    
+    #banner, .bx-wrapper{
+        display: none;
+    }*/
+}
