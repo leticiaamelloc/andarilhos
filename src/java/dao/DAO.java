@@ -39,7 +39,9 @@ public abstract class DAO<T extends Entity> {
     }
 
     public abstract boolean saveOrUpdate(T entity);
+
     public abstract Optional<T> findById(Long id);
+
     public abstract List<T> findAll();
 
 }

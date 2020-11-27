@@ -4,39 +4,78 @@
     Author     : lcunha
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.Usuario" %>
+<%@ page import="enums.TipoUsuario" %>
 
-        <header id="topo">
-        <div id="logo">
-      
-            <img src="../assets/img/logo.png" alt="">
-        </div>
+<header id="topo">
+    <% Usuario user = (Usuario) request.getSession().getAttribute("user");
+        if (user == null) { %>
+    <div id="logo">
 
-        <div id="btn-menu">
-            <div class="barra"></div>                
-            <div class="barra"></div>                
-            <div class="barra"></div>
-        </div>
+        <img src="../assets/img/logo.png" alt="">
+    </div>
 
-        <nav id="menu">
+    <div id="btn-menu">
+        <div class="barra"></div>                
+        <div class="barra"></div>                
+        <div class="barra"></div>
+    </div>
+
+    <nav id="menu">
         <ul>
             <li><a href="index">Home</a></li>
             <li><a href="quem_somos">Quem Somos</a></li>
             <li>
                 <a href="destinos">Destinos</a>
-                <!-- <ul>
-                    <li><a href="#">Brasil</a></li>
-                     <li><a href="#">México</a></li>
-                     <li><a href="#">Tailândia</a></li>
-                     <li><a href="#">Uruguai</a></li>
-                     <li><a href="#">Vietnã</a></li>
-               
-                </ul> -->
             </li>
             <li><a href="faca_parte">Faça Parte </a></li>
             <li><a href="/login">Entrar</a></li>
         </ul>
-        </nav>
-    </header>
-    
-  
+    </nav>
+
+    <% } else {%>
+    <div id="logo">
+
+        <img src="../../assets/img/logo.png" alt="">
+    </div>
+
+    <div id="btn-menu">
+        <div class="barra"></div>                
+        <div class="barra"></div>                
+        <div class="barra"></div>
+    </div>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="../index">Home</a></li>
+            <li><a href="../quem_somos">Quem Somos</a></li>
+            <li>
+                <a href="../destinos">Destinos</a>
+            </li>
+            <%  TipoUsuario tipo = user.getTipo();
+                if (tipo.equals(TipoUsuario.ADMIN)) {%>
+            <li class="nav-item"><a class="nav-link">Área do administrador</a>
+                <ul>
+                    <li><a href="/administrador/aprovacao-cadastro">Cadastros Pendentes</a></li>
+                </ul> 
+            </li>
+            <%} else if (tipo.equals(TipoUsuario.AUTOR)) { %>
+            <li class="nav-item"><a class="nav-link">Área do autor</a>
+                <ul>
+                    <li><a href="/autor/meus-posts">Meus Posts</a></li>
+                    <li><a href="/autor/novo-post">Novo Post</a></li>  
+                </ul> 
+
+            </li>
+            <%} else if (tipo.equals(TipoUsuario.COMENTARISTA)) { %>
+            <li class="nav-item"><a class="nav-link">Área do comentarista</a></li>
+                <%} %>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+
+        </ul>
+    </nav>
+    <% }%>
+</header>
+
+

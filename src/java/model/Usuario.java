@@ -1,5 +1,7 @@
 package model;
 
+import enums.TipoUsuario;
+
 public class Usuario extends Entity {
 
     private String nome;
@@ -7,7 +9,9 @@ public class Usuario extends Entity {
     private String senha;
     private String cpf;
     private Integer papel;
-    
+    private TipoUsuario tipo;
+    private String cadastroAprovado;
+
     public String getNome() {
         return nome;
     }
@@ -40,7 +44,7 @@ public class Usuario extends Entity {
         this.cpf = cpf;
     }
 
-     public Integer getPapel() {
+    public Integer getPapel() {
         return papel;
     }
 
@@ -48,5 +52,21 @@ public class Usuario extends Entity {
         this.papel = papel;
     }
 
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+
+        this.tipo = tipo;
+    }
+
+    public String getCadastroAprovado() {
+        return cadastroAprovado;
+    }
+
+    public void setCadastroAprovado(String cadastroAprovado) {
+        this.cadastroAprovado = cadastroAprovado;
+    }
 
 }

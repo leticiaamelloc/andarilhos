@@ -1,8 +1,7 @@
 package controller;
 
-//import dao.AdministradorDAO;
+
 import dao.UsuarioDAO;
-//import dao.InstrutorDAO;
 import dao.LoginDAO;
 import model.Usuario;
 
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 import java.io.PrintWriter;
-
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
@@ -32,20 +30,18 @@ public class LoginController extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
 
-
         if (cpf != null && senha != null) {
             LoginDAO<?> dao;
-            
+
             dao = new UsuarioDAO();
 
             Optional<Usuario> user = dao.login(cpf, senha);
 
             if (user.isPresent()) {
-                 req.getSession().setAttribute("user", user.get());
-                 resp.sendRedirect("/");
-                 return;
-               
-            
+                req.getSession().setAttribute("user", user.get());
+                resp.sendRedirect("/");
+                return;
+
             }
         }
 
@@ -54,8 +50,7 @@ public class LoginController extends HttpServlet {
         out.println("location='/login';");
         out.println("</script>");
 
-        
-     //   req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+        //   req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
     }
 
 }

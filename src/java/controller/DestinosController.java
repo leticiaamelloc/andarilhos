@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
+
 import javax.servlet.ServletException;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author lcunha
  */
 @WebServlet("/destinos")
-public class DestinosController  extends HttpServlet {
+public class DestinosController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/destinos.jsp").forward(req, resp);

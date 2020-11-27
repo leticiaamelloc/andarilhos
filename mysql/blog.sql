@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nome` varchar(45) COLLATE latin1_bin DEFAULT NULL,
   `cpf` varchar(14) COLLATE latin1_bin NOT NULL,
   `papel` tinyint(1) NOT NULL,
+  `cadastro_aprovado` char(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -19,7 +20,7 @@ CREATE TABLE `categoria` (
 
 DROP TABLE IF EXISTS `artigo`;
 CREATE TABLE `artigo` (
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_usuario` int(10) unsigned NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `titulo` varchar(255) COLLATE latin1_bin NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE `artigo` (
 
 DROP TABLE IF EXISTS `comentario`;
 CREATE TABLE `comentario` (
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `comentario` text COLLATE latin1_bin NOT NULL,
   `id_artigo` int(10) unsigned NOT NULL,
   `id_usuario` int(10) unsigned NOT NULL,
@@ -46,7 +47,7 @@ CREATE TABLE `comentario` (
   CONSTRAINT `fk_id_usuario_idx_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO usuario (email, senha, nome, cpf, papel) VALUES ('teste@teste.com', '123', 'Teste', '249.252.810-38', 1)
+INSERT INTO usuario (email, senha, nome, cpf, papel) VALUES ('teste@teste.com', '111', 'Teste', '249.252.810-38', 1)
 
 
 

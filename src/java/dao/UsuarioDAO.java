@@ -20,40 +20,35 @@ public class UsuarioDAO extends LoginDAO<Usuario> {
     }
 
     @Override
-    public Optional<Usuario> login(String login, String password) {
-        return this.login(login, password, 1);
-    }
-
-    @Override
     public boolean saveOrUpdate(Usuario entity) {
         String query;
         Connection conn = DatabaseConnection.getConn();
         PreparedStatement ps = null;
 
         if (entity.getId() == null) {
-            query = "INSERT INTO" + tableName + "(email, senha, nome, cpf, papel) VALUES (?,?,?,?,?)";
+            query = "INSERT INTO " + tableName + " (email, senha, nome, cpf, papel, cadastro_aprovado) VALUES (?,?,?,?,?, ?)";
         } else {
-            query = "UPDATE " + tableName + " SET email = ?, senha = ?, nome = ?, cpf = ?, papel = ? WHERE id = ?";
+            query = "UPDATE " + tableName + " SET email = ?, senha = ?, nome = ?, cpf = ?, papel = ?, cadastro_aprovado = ? WHERE id = ?";
         }
 
         try {
             ps = conn.prepareStatement(query);
             ps.setString(1, entity.getEmail());
             ps.setString(2, entity.getSenha());
-            
+
             /*if (!entity.getSenha().contains("$2a$")) {
                 ps.setString(2, entity.hashPassword());
             } else {
                 ps.setString(2, entity.getSenha());
             }*/
-            
             ps.setString(3, entity.getNome());
             ps.setString(4, entity.getCpf());
             ps.setInt(5, entity.getPapel());
 
+            ps.setString(6, entity.getCadastroAprovado());
 
             if (entity.getId() != null) {
-                ps.setLong(6, entity.getId());
+                ps.setLong(7, entity.getId());
                 ps.executeUpdate();
             } else {
                 ps.execute();
@@ -89,13 +84,8 @@ public class UsuarioDAO extends LoginDAO<Usuario> {
                 entity.setSenha(rs.getString("senha"));
                 entity.setCpf(rs.getString("cpf"));
                 entity.setEmail(rs.getString("email"));
-           
-                
-                for (Aprovacao a : Aprovacao.values()) {
-                    if (a.valor.equals(rs.getString("aprovado"))) {
-                        entity.setAprovado(a);
-                    }
-                }
+                entity.setCadastroAprovado(rs.getString("cadastro_aprovado"));
+                entity.setPapel(rs.getInt("papel"));
 
                 return Optional.of(entity);
             } else {
@@ -133,7 +123,8 @@ public class UsuarioDAO extends LoginDAO<Usuario> {
                 entity.setSenha(rs.getString("senha"));
                 entity.setCpf(rs.getString("cpf"));
                 entity.setEmail(rs.getString("email"));
-             
+                entity.setCadastroAprovado(rs.getString("cadastro_aprovado"));
+
                 list.add(entity);
             }
         } catch (SQLException e) {
@@ -146,12 +137,10 @@ public class UsuarioDAO extends LoginDAO<Usuario> {
 
         return list;
     }
-    
 
-    
     @Override
     public boolean delete(Long id) {
-        String query = "DELETE FROM" + tableName +  "WHERE id = ?";
+        String query = "DELETE FROM " + tableName + " WHERE id = ?";
         PreparedStatement ps = null;
         Connection conn = DatabaseConnection.getConn();
 
@@ -170,5 +159,40 @@ public class UsuarioDAO extends LoginDAO<Usuario> {
             DbUtils.closeQuietly(ps);
         }
     }
-    
+
+    public List<Usuario> findByAprovacaoCadastro(String aprovacaoCadastro) {
+        String query = "SELECT * FROM " + tableName + " WHERE cadastro_aprovado = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Usuario> list = new ArrayList<>();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, aprovacaoCadastro);
+            rs = ps.executeQuery();
+            Usuario entity;
+
+            while (rs.next()) {
+                entity = new Usuario();
+                entity.setId(rs.getLong("id"));
+                entity.setNome(rs.getString("nome"));
+                entity.setSenha(rs.getString("senha"));
+                entity.setCpf(rs.getString("cpf"));
+                entity.setEmail(rs.getString("email"));
+                entity.setCadastroAprovado(rs.getString("cadastro_aprovado"));
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
+
 }
