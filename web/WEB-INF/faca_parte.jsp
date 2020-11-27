@@ -53,7 +53,7 @@
                 <input type="password" required name="senha">
             </div>
 
-            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="submit"  style="margin: 30px">Enviar</button>
+            <button class="btn btn-primary" type="submit"  style="margin: 30px">Enviar</button>
         </form>
 
 

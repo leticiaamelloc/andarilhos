@@ -17,8 +17,9 @@ public class MeusPostsController extends HttpServlet {
         ArtigoDAO dao = new ArtigoDAO();
 
         Usuario user = (Usuario) req.getSession().getAttribute("user");
-        req.setAttribute("usuario", dao.findByUsuarioId(user.getId()));
+        req.setAttribute("artigos", dao.findByUsuarioId(user.getId()));
         req.getRequestDispatcher("/WEB-INF/autor/meus-posts.jsp").forward(req, resp);
     }
-
+  
+   
 }
