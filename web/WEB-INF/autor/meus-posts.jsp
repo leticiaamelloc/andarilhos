@@ -22,41 +22,49 @@
 
         <jsp:include page="../navbar.jsp" />
 
+
         <div class="container">
             <div class="row">
                 <% List<Artigo> artigos = (List<Artigo>) request.getAttribute("artigos");
-                    for (Artigo m : artigos) {
+                    for (Artigo a : artigos) {
                 %>
-               
-                    <div class="card" style="width: 18rem; margin:30px;">
 
-                        <div class="card-body">
-                            <h1 class="card-title"><%=m.getTitulo()%></h1>
-                            <p class="card-text"><%=m.getConteudo()%></p>
-                              <p class="card-text"><small class="text-muted">Categoria: <%=m.getCategoria().getDescricao()%></small></p>
-                                <% if (m.getAprovado() == "S") {%>
-                                 <p class="card-text"><small class="text-muted">Status: Post Liberado para o público</small></p>
-                             <% } else if (m.getLiberar() == "S") {%>
-                                   <p class="card-text"><small class="text-muted">Status: Post aguardando aprovação do administrador</small></p>
-                            <%  } else {%>
-                            <button class="btn btn-primary">Liberar Post</button>
-                             <% }%>
-                            
-                           
+                <div class="card" style="width: 18rem; margin:30px;">
 
-                        </div>
+                    <div class="card-body">
+                        <h1 class="card-title"><%=a.getTitulo()%></h1>
+                        <p class="card-text" style="border: solid 1px black;"><small class="text-muted">Categoria: <%=a.getCategoria().getDescricao()%></small></p>
+                        <p class="card-text" style="border: solid 1px black;"><%=a.getConteudo()%></p>
                     </div>
-              
+                    <% if ("S".equals(a.getAprovado())) {%>
+                    <p class="card-text"><small class="text-muted" >Status: Post Liberado para o público</small></p>
+                    <% } else if ("S".equals(a.getLiberar())) {%>
+                    <p class="card-text"><small class="text-muted">Status: Post aguardando aprovação do administrador</small></p>
+                    <a href="/autor/meus-posts?id=<%=a.getId()%>&op=excluir">
+                        <button class="btn btn-primary" type="submit" style="color:red;">Excluir</button>
+                    </a>
+                    <a href="/administrador/editar-post?id=<%=a.getId()%>">
+                        <button class="btn btn-primary" type="submit">Editar</button>
+                    </a>
+                    <%  } else {%>
+                    <p class="card-text"><small class="text-muted">Status: Post aguardando liberação do autor</small></p>
+                    <a href="/autor/meus-posts?id=<%=a.getId()%>&op=liberar">
+                        <button class="btn btn-primary" type="submit" style="color:green;">Liberar</button>
+                    </a>
+                    <a href="/autor/meus-posts?id=<%=a.getId()%>&op=excluir">
+                        <button class="btn btn-primary" type="submit" style="color:red;">Excluir</button>
+                    </a>
+                    <a href="/administrador/editar-post?id=<%=a.getId()%>">
+                        <button class="btn btn-primary" type="submit">Editar</button>
+                    </a>
+                    <% }%>
 
-
-
-                     <% }%>
+                </div>
+                <% }%>
             </div>
         </div>
 
-
-    </div>
-    <jsp:include page="../footer.jsp" />
-</body>
+        <jsp:include page="../footer.jsp" />
+    </body>
 
 </html>

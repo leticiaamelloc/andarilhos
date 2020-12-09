@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-         <head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Andarilhos</title>
@@ -17,7 +17,7 @@
     </head>
     <body>    
 
-<jsp:include page="navbar.jsp" />
+        <jsp:include page="navbar.jsp" />
 
         <form method="POST" action="login">
             <div class="form-group" style="margin: 30px;">
@@ -37,7 +37,7 @@
     </main>
 
 
-   <jsp:include page="footer.jsp" />
+    <jsp:include page="footer.jsp" />
 </body>
 
 </html>

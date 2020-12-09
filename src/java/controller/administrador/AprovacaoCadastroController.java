@@ -21,7 +21,7 @@ public class AprovacaoCadastroController extends HttpServlet {
 
         if (param != null && param2 != null) {
             Long id = Long.valueOf(req.getParameter("id"));
-            
+
             if (param2.equals("deletar")) {
                 dao.delete(id);
             } else if (param2.equals("aprovar")) {
@@ -30,7 +30,7 @@ public class AprovacaoCadastroController extends HttpServlet {
                 dao.saveOrUpdate(u);
             }
         }
-        
+
         req.setAttribute("usuarios", dao.findByAprovacaoCadastro("N"));
         req.getRequestDispatcher("/WEB-INF/administrador/aprovacao-cadastro.jsp").forward(req, resp);
     }

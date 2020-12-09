@@ -18,12 +18,12 @@ import model.Categoria;
 public class NovoPostController extends HttpServlet {
 
     UsuarioDAO Udao = new UsuarioDAO();
-       
-     @Override
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Usuario user = (Usuario) req.getSession().getAttribute("user");
         req.setAttribute("usuario", Udao.findById(user.getId()).get());
-        
+
         req.getRequestDispatcher("/WEB-INF/autor/novo-post.jsp").forward(req, resp);
     }
 
@@ -32,25 +32,23 @@ public class NovoPostController extends HttpServlet {
         Artigo artigo = new Artigo();
         ArtigoDAO dao = new ArtigoDAO();
         Categoria categoria = new Categoria();
-        CategoriaDAO Cdao = new CategoriaDAO(); 
+        CategoriaDAO Cdao = new CategoriaDAO();
         Usuario user = (Usuario) req.getSession().getAttribute("user");
-        
-       
+
         categoria = Cdao.findByDescricao(req.getParameter("categoria"));
-        
-        if(categoria.getId() == null) {
+
+        if (categoria.getId() == null) {
             categoria.setDescricao(req.getParameter("categoria"));
             Cdao.saveOrUpdate(categoria);
             categoria = Cdao.findByDescricao(req.getParameter("categoria"));
         }
-           
+
         artigo.setTitulo(req.getParameter("titulo"));
         artigo.setConteudo(req.getParameter("conteudo"));
         artigo.setLiberar("N");
         artigo.setAprovado("N");
         artigo.setUsuario(user);
         artigo.setCategoria(categoria);
-       
 
         dao.saveOrUpdate(artigo);
         req.getRequestDispatcher("/WEB-INF/autor/novo-post.jsp").forward(req, resp);

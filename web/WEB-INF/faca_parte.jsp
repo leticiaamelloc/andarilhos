@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-      <head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Andarilhos</title>
@@ -17,7 +17,7 @@
     </head>
     <body>    
 
-<jsp:include page="navbar.jsp" />
+        <jsp:include page="navbar.jsp" />
 
         <form class="needs-validation" id="form-register" method="POST" action="/faca_parte">
 
@@ -57,7 +57,7 @@
         </form>
 
 
-          <jsp:include page="footer.jsp" />
+        <jsp:include page="footer.jsp" />
 
     </body>
 

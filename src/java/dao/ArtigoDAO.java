@@ -172,6 +172,84 @@ public class ArtigoDAO extends DAO<Artigo> {
         return list;
     }
 
+    public List<Artigo> findByLiberado() {
+        String query = "SELECT * FROM " + tableName + " WHERE liberar = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Artigo> list = new ArrayList<>();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "S");
+            rs = ps.executeQuery();
+            Artigo entity;
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            CategoriaDAO categoriaDAO = new CategoriaDAO();
+
+            while (rs.next()) {
+                entity = new Artigo();
+
+                entity.setId(rs.getLong("id"));
+                entity.setUsuario(usuarioDAO.findById(rs.getLong("id_usuario")).get());
+                entity.setCategoria(categoriaDAO.findById(rs.getLong("id_categoria")).get());
+                entity.setTitulo(rs.getString("titulo"));
+                entity.setConteudo(rs.getString("conteudo"));
+                entity.setLiberar(rs.getString("liberar"));
+                entity.setAprovado(rs.getString("aprovado"));
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
+
+    public List<Artigo> findByAprovado() {
+        String query = "SELECT * FROM " + tableName + " WHERE aprovado = ?";
+        Connection conn = DatabaseConnection.getConn();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Artigo> list = new ArrayList<>();
+
+        try {
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "S");
+            rs = ps.executeQuery();
+            Artigo entity;
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            CategoriaDAO categoriaDAO = new CategoriaDAO();
+
+            while (rs.next()) {
+                entity = new Artigo();
+
+                entity.setId(rs.getLong("id"));
+                entity.setUsuario(usuarioDAO.findById(rs.getLong("id_usuario")).get());
+                entity.setCategoria(categoriaDAO.findById(rs.getLong("id_categoria")).get());
+                entity.setTitulo(rs.getString("titulo"));
+                entity.setConteudo(rs.getString("conteudo"));
+                entity.setLiberar(rs.getString("liberar"));
+                entity.setAprovado(rs.getString("aprovado"));
+
+                list.add(entity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(conn);
+            DbUtils.closeQuietly(ps);
+            DbUtils.closeQuietly(rs);
+        }
+
+        return list;
+    }
+
     @Override
     public boolean delete(Long id) {
         String query = "DELETE FROM artigo WHERE id = ?";

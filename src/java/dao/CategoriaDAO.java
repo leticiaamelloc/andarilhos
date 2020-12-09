@@ -41,7 +41,7 @@ public class CategoriaDAO extends DAO<Categoria> {
             } else {
                 ps.execute();
             }
-            
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -85,7 +85,6 @@ public class CategoriaDAO extends DAO<Categoria> {
             DbUtils.closeQuietly(rs);
         }
     }
-    
 
     public Categoria findByDescricao(String descricao) {
         String query = "SELECT * FROM " + tableName + " WHERE descricao = ?";
@@ -103,10 +102,9 @@ public class CategoriaDAO extends DAO<Categoria> {
                 entity.setId(rs.getLong("id"));
                 entity.setDescricao(rs.getString("descricao"));
 
-               
-            } 
-           
-             return entity;
+            }
+
+            return entity;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,7 +115,6 @@ public class CategoriaDAO extends DAO<Categoria> {
             DbUtils.closeQuietly(rs);
         }
     }
-
 
     @Override
     public List<Categoria> findAll() {

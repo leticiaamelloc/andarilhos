@@ -10,10 +10,10 @@
         <link rel="stylesheet" href="../../assets/fonts/css/style.css">
         <link rel="stylesheet" type="text/css" href="../../assets/fonts/css/bootstrap-grid.css">
 
-  
+
     </head>
     <body>   
-    
+
         <jsp:include page="../navbar.jsp" />
 
         <div class="container">
@@ -52,6 +52,6 @@
                 </tbody>
             </table>
         </div>
-                <jsp:include page="../footer.jsp" />
+        <jsp:include page="../footer.jsp" />
     </body>
 </html>

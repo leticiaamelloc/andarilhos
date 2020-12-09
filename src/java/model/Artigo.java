@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Artigo extends Entity {
 
     private Usuario usuario;
@@ -8,6 +10,8 @@ public class Artigo extends Entity {
     private String conteudo;
     private String liberar;
     private String aprovado;
+
+    private List<Comentario> comentarios;
 
     public Usuario getUsuario() {
         return usuario;
@@ -55,6 +59,14 @@ public class Artigo extends Entity {
 
     public void setAprovado(String aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
 }

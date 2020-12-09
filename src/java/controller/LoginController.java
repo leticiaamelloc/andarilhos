@@ -1,6 +1,5 @@
 package controller;
 
-
 import dao.UsuarioDAO;
 import dao.LoginDAO;
 import model.Usuario;
