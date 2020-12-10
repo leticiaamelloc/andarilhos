@@ -4,6 +4,7 @@
     Author     : lcunha
 --%>
 <%@page import="model.Artigo"%>
+<%@page import="model.Comentario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,15 +30,29 @@
                     for (Artigo a : artigos) {
                 %>
 
-                <div class="card" style="width: 18rem; margin:30px;">
+                <div class="card" style="width: 18rem; margin:30px; word-break: break-all;">
+                    
+                    
 
-                    <div class="card-body">
-                        <h1 class="card-title"><%=a.getTitulo()%></h1>
-                        <p class="card-text" style="border: solid 1px black;"><small class="text-muted">Categoria: <%=a.getCategoria().getDescricao()%></small></p>
-                        <p class="card-text" style="border: solid 1px black;"><%=a.getConteudo()%></p>
+                    <div class="card-body" style="border: solid 1px brown">
+                        <h1 class="card-title" style="border-bottom: solid 1px brown; padding:20px;"><%=a.getTitulo()%></h1>
+                        <p class="card-text" style="border-bottom: solid 1px brown; padding: 5px; margin-top: -5px;"><small class="text-muted">Categoria: <%=a.getCategoria().getDescricao()%></small></p>
+                        <p class="card-text" style="padding:10px; margin-top: -5px;"><%=a.getConteudo()%></p>
                     </div>
                     <% if ("S".equals(a.getAprovado())) {%>
+                      <ul class="list-group list-group-flush" style=" border-bottom: solid 1px brown;
+    list-style-type: none;
+    text-align: left;
+    margin-top: 0;
+    border-left: solid 1px brown;
+    border-right: solid 1px brown;
+    padding-top: 10px; list-style-type: none; text-align: left;">
+                        <% for (Comentario c : a.getComentarios()) {%>
+                        <li class="list-group-item" style="padding-bottom: 10px;" ><%=c.getComentario()%></li>
+                            <% }%>
+                    </ul>
                     <p class="card-text"><small class="text-muted" >Status: Post Liberado para o público</small></p>
+                   
                     <% } else if ("S".equals(a.getLiberar())) {%>
                     <p class="card-text"><small class="text-muted">Status: Post aguardando aprovação do administrador</small></p>
                     <a href="/autor/meus-posts?id=<%=a.getId()%>&op=excluir">

@@ -124,6 +124,7 @@ public class UsuarioDAO extends LoginDAO<Usuario> {
                 entity.setCpf(rs.getString("cpf"));
                 entity.setEmail(rs.getString("email"));
                 entity.setCadastroAprovado(rs.getString("cadastro_aprovado"));
+                entity.setPapel(rs.getInt("papel"));
 
                 list.add(entity);
             }

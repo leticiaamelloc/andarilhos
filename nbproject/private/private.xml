@@ -3,14 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/index.jsp</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/posts.jsp</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/faca_parte.jsp</file>
             <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/dao/ArtigoDAO.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/model/Comentario.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/PostsController.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/navbar.jsp</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/administrador/aprovacao-posts.jsp</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/dao/ComentarioDAO.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/administrador/editar-cadastro.jsp</file>
             <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/autor/MeusPostsController.java</file>
-            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/FacaParteController.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/administrador/editar-post.jsp</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/administrador/EditarPostController.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/administrador/editar-comentario.jsp</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/administrador/AprovacaoPostsController.java</file>
             <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/web/WEB-INF/autor/meus-posts.jsp</file>
-            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/autor/NovoPostController.java</file>
-            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/model/Artigo.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/administrador/AprovacaoCadastroController.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/comentarista/PostsController.java</file>
+            <file>file:/C:/Users/lcunha/Documents/Projetos%20-DEV/Andarilhos/src/java/controller/administrador/EditarComentarioController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import model.Usuario;
 
-@WebServlet("/administrador/aprovacao-cadastro")
+@WebServlet("/administrador/usuarios")
 public class AprovacaoCadastroController extends HttpServlet {
 
     UsuarioDAO dao = new UsuarioDAO();
@@ -31,8 +31,8 @@ public class AprovacaoCadastroController extends HttpServlet {
             }
         }
 
-        req.setAttribute("usuarios", dao.findByAprovacaoCadastro("N"));
-        req.getRequestDispatcher("/WEB-INF/administrador/aprovacao-cadastro.jsp").forward(req, resp);
+        req.setAttribute("usuarios", dao.findAll());
+        req.getRequestDispatcher("/WEB-INF/administrador/usuarios.jsp").forward(req, resp);
     }
 
 }

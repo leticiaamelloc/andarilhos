@@ -18,7 +18,7 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
     }
 
     public Optional<Usuario> login(String cpf, String password) {
-        String query = "SELECT id, nome,email, papel FROM " + tableName + " WHERE cpf = ? AND senha = ?";
+        String query = "SELECT * FROM " + tableName + " WHERE cpf = ? AND senha = ?";
         Connection conn = DatabaseConnection.getConn();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -37,6 +37,7 @@ public abstract class LoginDAO<T extends Usuario> extends DAO<T> {
                 user.setNome(rs.getString("nome"));
                 user.setEmail(rs.getString("email"));
                 user.setPapel(rs.getInt("papel"));
+                user.setCadastroAprovado(rs.getString("cadastro_aprovado"));
 
                 if (user.getPapel() == 0) {
                     tipo = TipoUsuario.ADMIN;

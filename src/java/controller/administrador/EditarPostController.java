@@ -55,12 +55,18 @@ public class EditarPostController extends HttpServlet {
         a.setTitulo(req.getParameter("titulo"));
         a.setCategoria(categoria);
         a.setConteudo(req.getParameter("conteudo"));
-        a.setLiberar("N");
-        a.setAprovado("N");
+        a.setLiberar(req.getParameter("liberar"));
+        a.setAprovado(req.getParameter("aprovado"));
         a.setUsuario(user);
 
         dao.saveOrUpdate(a);
-        resp.sendRedirect("/autor/meus-posts");
+       
+        if (user.getPapel() == 0) {
+            resp.sendRedirect("/administrador/aprovacao-posts");
+        } else {
+            resp.sendRedirect("/autor/meus-posts");
+        }
+        
     }
 
 }

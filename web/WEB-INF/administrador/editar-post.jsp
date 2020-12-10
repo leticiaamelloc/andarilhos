@@ -25,10 +25,12 @@
 
         <form class="needs-validation" id="edicao-post-form" method="POST" action="/administrador/editar-post">
             <h1 style="margin: 30px">
-                Edite aqui sua postagem!
+                Edite aqui a postagem!
             </h1>
             <% if (a != null) {%>
             <input type="hidden" name="id" value="<%=a.getId()%>">
+             <input type="hidden" name="liberar" value="<%=a.getLiberar()%>">
+              <input type="hidden" name="aprovado" value="<%=a.getAprovado()%>">
             <% } %>
             <div class="form-group" style="margin-top:20px;">
                 <label>Titulo: *</label>
@@ -37,13 +39,13 @@
             </div>
             <div class="form-group" style="margin-top:20px;">
                 <label>Categoria: *</label>
-                <input type="text" class="form-control"required minlength="10"
+                <input type="text" class="form-control"required 
                        value="<%if (a != null) {%><%=a.getCategoria().getDescricao()%><%}%>" name="categoria">
             </div>
 
             <div class="form-group" style="margin-top:20px;">
                 <label>Texto: *</label>
-                <textarea name="conteudo" form="post-form"><%if (a != null && a.getConteudo() != null) {%><%=a.getConteudo()%><%}%></textarea>
+                <textarea name="conteudo" class="form-control" required><%if (a != null) {%><%=a.getConteudo()%><%}%></textarea>
             </div>
 
             <button type="submit" style="margin-top:20px;" class="btn btn-primary">Salvar</button>

@@ -103,10 +103,10 @@
                 </section>
 
                 <section class="coluna-inferior">
-                    <h2>Nossos Destinos</h2>
+                    <h2>Nossos Posts</h2>
                     <img src="../assets/img/nossos_destinos.jpg" alt="">
                     <p>Lorem ipsum dolor sit amet innc, consectetur adipiscing elit. Nulla semper, sem eget blandit auctor, am libero dapibus erat, aullam uccorper nisi quam sed donec auctor cursus tortor ettius last.</p>
-                    <a href="/destinos" class="btn">Saiba mais</a>
+                    <a href="/posts" class="btn">Saiba mais</a>
                 </section>
 
                 <section class="coluna-inferior">

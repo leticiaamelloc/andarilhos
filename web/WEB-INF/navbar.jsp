@@ -57,8 +57,8 @@
                 if (tipo.equals(TipoUsuario.ADMIN)) {%>
             <li class="nav-item"><a class="nav-link">Área do administrador</a>
                 <ul>
-                    <li><a href="/administrador/aprovacao-cadastro">Cadastros Pendentes</a></li>
-                    <li><a href="/administrador/aprovacao-posts">Posts Pendentes</a></li>
+                    <li><a href="/administrador/usuarios">Usuários</a></li>
+                    <li><a href="/administrador/aprovacao-posts">Posts</a></li>
                 </ul> 
             </li>
             <%} else if (tipo.equals(TipoUsuario.AUTOR)) { %>

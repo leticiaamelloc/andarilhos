@@ -37,9 +37,17 @@ public class LoginController extends HttpServlet {
             Optional<Usuario> user = dao.login(cpf, senha);
 
             if (user.isPresent()) {
-                req.getSession().setAttribute("user", user.get());
-                resp.sendRedirect("/");
-                return;
+
+                if ("S".equals(user.get().getCadastroAprovado())) {
+                    req.getSession().setAttribute("user", user.get());
+                    resp.sendRedirect("/");
+                    return;
+                } else {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Aguardando aprovação do administrdor!');");
+                    out.println("location='/login';");
+                    out.println("</script>");
+                }
 
             }
         }

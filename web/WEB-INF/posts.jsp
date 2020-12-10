@@ -29,24 +29,26 @@
                     for (Artigo a : artigos) {
                 %>
 
-                <div class="card" style="width: 18rem; margin:30px;">
+                <div class="card" style="width: 18rem; margin:30px; word-break: break-all;">
 
-                    <div class="card-body">
-                        <h1 class="card-title"><%=a.getTitulo()%></h1>
-                        <p class="card-text" style="border: solid 1px black;"><small class="text-muted">Categoria: <%=a.getCategoria().getDescricao()%></small></p>
-                        <p class="card-text" style="border: solid 1px black;"><%=a.getConteudo()%></p>
-                    </div>
-                    <label>Comentários:</label>
-                    <ul class="list-group list-group-flush"style="border: solid 1px black;">
+                    <div class="card-body" style="border: solid 1px brown">
+                        <h1 class="card-title" style="border-bottom: solid 1px brown; padding:20px;"><%=a.getTitulo()%></h1>
+                        <p class="card-text" style="border-bottom: solid 1px brown; padding: 5px; margin-top: -5px;"><small class="text-muted">Categoria: <%=a.getCategoria().getDescricao()%></small></p>
+                        <p class="card-text" style="border-bottom: solid 1px brown;  padding:10px; margin-top: -10px;"><%=a.getConteudo()%></p>
+     
+                    <ul class="list-group list-group-flush" style="list-style-type: none; text-align: left;">
                         <% for (Comentario c : a.getComentarios()) {%>
-                        <li class="list-group-item"><%=c.getComentario()%></li>
+                        <li class="list-group-item" style="padding-bottom: 10px;" ><%=c.getComentario()%></li>
                             <% }%>
                     </ul>
+                    </div>
+                   
                 </div>
                 <% }%>
             </div>
         </div>
-
+ 
+                    
 
     </div>
     <jsp:include page="footer.jsp" />

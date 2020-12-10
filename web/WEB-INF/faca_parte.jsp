@@ -27,7 +27,7 @@
             <h3> Deixe seu contato e retornaremos sua solicitação! </h3>
             <div class="form-group"  style="margin: 30px">
                 <label form="form-register">Digite seu nome:</label>
-                <input type="text" minlength="3" maxlength="50" name="nome">
+                <input type="text" name="nome">
 
             </div>
             <div class="form-group" style="margin: 30px">
